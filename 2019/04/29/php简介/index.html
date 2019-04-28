@@ -16,11 +16,16 @@
   
   
   
-    <meta name="description" content="MISC 打字机下载附件进行解压谷歌搜图https://i1.wp.com/pic1.zhimg.com/50/v2-7ee2c1baaaa3bd660765e5d9264f0803_hd.jpg读图得 hgame{My_vi0let_tyPewRiter}
-WEB very easy web代码审计题
-1234567891011121314&lt;?phperror_reporting(0...">
+    <meta name="description" content="什么是PHP？PHP 是 “PHP Hypertext Preprocessor” 的首字母缩略词
+PHP 是一种被广泛使用的开源脚本语言
+PHP 脚本在服务器上执行
+PHP 没有成本，可供免费下载和使用
+什么是 PHP 文件？PHP 文件能够包含文本、HTML、CSS 以及 PHP 代码
+PHP 代码在服务器上执行，而结果以纯文本返回浏览器
+PHP 文件的后缀是 “.php”
+PHP 能够...">
   
-  <title>this is my first blog [ VAnSterren's Blog ]</title>
+  <title>2019.4.17 PHP简介 [ VAnSterren's Blog ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -80,6 +85,13 @@ WEB very easy web代码审计题
           
             <li>
           
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
             <a href="/about">About</a>
             
           </li>
@@ -99,20 +111,50 @@ WEB very easy web代码审计题
   
 
   <article id="post">
-    <h1>this is my first blog</h1>
+    <h1>2019.4.17 PHP简介</h1>
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-28</span>
       
         <span id="post-title-updated">Updated at 2019-04-28</span>
       
       
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/PHP学习笔记/">PHP学习笔记</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/PHP/">PHP</a>
+      
+      </span>
       
     </p>
     
-    <p>MISC 打字机<br>下载附件进行解压<br><img src="https://img-blog.csdnimg.cn/20190126033758164.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190126033807525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4MjM1Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">谷歌搜图<br><a href="https://i1.wp.com/pic1.zhimg.com/50/v2-7ee2c1baaaa3bd660765e5d9264f0803_hd.jpg" target="_blank" rel="noopener">https://i1.wp.com/pic1.zhimg.com/50/v2-7ee2c1baaaa3bd660765e5d9264f0803_hd.jpg</a><br>读图<br>得 hgame{My_vi0let_tyPewRiter}</p>
-<p>WEB very easy web<br>代码审计题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line"></span><br><span class="line">if(strpos(&quot;vidar&quot;,$_GET[&apos;id&apos;])!==FALSE)</span><br><span class="line">  die(&quot;&lt;p&gt;干巴爹&lt;/p&gt;&quot;);</span><br><span class="line"></span><br><span class="line">$_GET[&apos;id&apos;] = urldecode($_GET[&apos;id&apos;]);</span><br><span class="line">if($_GET[&apos;id&apos;] === &quot;vidar&quot;)</span><br><span class="line">&#123;</span><br><span class="line">  echo $flag;</span><br><span class="line">&#125;</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p> 第一个if语句，对传入的参数id和”vidar”进行判断，如果传入的参数id的值为”vidar”，则输出”干巴爹”<br>参数id的值等于url解码后的参数id的值<br>第二个if语句，判断传入的参数id是否为vidar，如果是的话就输出flag<br>因为对vidar的一次url编码会被浏览器转为vidar，所以要进行两次的url编码<br><img src="https://img-blog.csdnimg.cn/20190126035446807.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4MjM1Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">RE  HelloRe<br>下载附件，记事本打开直接可以得到flag<br>hgame{Welc0m3_t0_R3_World!}</p>
+    <p>什么是PHP？<br>PHP 是 “PHP Hypertext Preprocessor” 的首字母缩略词</p>
+<p>PHP 是一种被广泛使用的开源脚本语言</p>
+<p>PHP 脚本在服务器上执行</p>
+<p>PHP 没有成本，可供免费下载和使用</p>
+<p>什么是 PHP 文件？<br>PHP 文件能够包含文本、HTML、CSS 以及 PHP 代码</p>
+<p>PHP 代码在服务器上执行，而结果以纯文本返回浏览器</p>
+<p>PHP 文件的后缀是 “.php”</p>
+<p>PHP 能够做什么？<br>PHP 能够生成动态页面内容</p>
+<p>PHP 能够创建、打开、读取、写入、删除以及关闭服务器上的文件</p>
+<p>PHP 能够接收表单数据</p>
+<p>PHP 能够发送并取回 cookies</p>
+<p>PHP 能够添加、删除、修改数据库中的数据</p>
+<p>PHP 能够限制用户访问网站中的某些页面</p>
+<p>PHP 能够对数据进行加密</p>
+<p>通过 PHP，可以不受限于只输出 HTML。您还能够输出图像、PDF 文件、甚至 Flash 影片。您也可以输出任何文本，比如 XHTML 和 XML。</p>
 
   </article>
   <div class="random-toc-area">
