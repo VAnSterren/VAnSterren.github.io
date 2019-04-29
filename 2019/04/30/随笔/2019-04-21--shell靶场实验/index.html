@@ -1,0 +1,350 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="utf-8">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="VAnSterren">
+  
+  
+  
+  
+    <meta name="description" content="#实验原理1.使用 BurpSuite 密码爆破Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以截获并修改从客户端到 web 应用程序的数据包,通过对网站数...">
+  
+  <title>2019.4.21 shell靶场试验 [ VAnSterren's Blog ]</title>
+  
+  
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2019/04/30/随笔/2019-4-13-redis未授权访问漏洞靶场实验/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.13 Redis未授权访问漏洞漏洞靶场试验
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2019/04/30/PHP学习笔记/2019-04-18--PHP基本语法/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.18 PHP基本语法（一）
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1288608686,2705208637&fm=26&gp=0.jpg">
+          <div id="homelink">VAnSterren's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>2019.4.21 shell靶场试验</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-04-29</span>
+      
+        <span id="post-title-updated">Updated at 2019-04-29</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/随笔/">随笔</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/实验/">实验</a>
+      
+      </span>
+      
+    </p>
+    
+    <p>#实验原理<br>1.使用 BurpSuite 密码爆破<br>Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随<br>机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以<br>截获并修改从客户端到 web 应用程序的数据包,通过对网站数据包抓取等方式，将下载的字典<br>载入，从而破解网站的后台登陆密码。<br>2.Webshell 的使用<br>Webshell 是 web 入侵的脚本攻击工具。可以理解为一个 asp 或 php 木马后门，可以在入<br>侵了一个网站后，将这些 asp 或 php 木马后门文件放置在网站服务器的 web 目录中。然后黑<br>客就可以用 web 的方式，通过 asp 或 php 木马后门控制网站服务器，包括上传下载文件、查<br>看数据库、执行任意程序命令等。</p>
+<p>#实验过程<br>1.访问网址<br><img src="https://upload-images.jianshu.io/upload_images/15253954-d6908e421d91c8a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721895000.png"><br>2.御剑扫一下后台，扫出一个网址，<a href="http://10.4.0.101/123.asp" target="_blank" rel="noopener">http://10.4.0.101/123.asp</a> ,然后打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-3b5ab1e90b011f99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721948000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-88f99849ce198155.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721958000.png"><br>3.根据提示，打开网站根目录<a href="http://10.4.0.101/baopozidian.rar，" target="_blank" rel="noopener">http://10.4.0.101/baopozidian.rar，</a><br>下载压缩包<br><img src="https://upload-images.jianshu.io/upload_images/15253954-5c3e199d5a8a60ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721988000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ec90390fcec17869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722007000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-79551d7f30073305.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722025000.png"><br>4.输入任意密码（123），打开代理用 burp suite 抓包，对其进行爆<br>破 ， Send intruder-&gt;payloads-&gt;payload set-&gt;load<br>passwd.txt-&gt;start attack ,爆破完成,关闭代理得到网站目录，得<br>到网站根目录和 C 盘根目录的 flag<br><img src="https://upload-images.jianshu.io/upload_images/15253954-e221c46bad89afb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722063000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-19f0972579eb6e90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722072000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ded9d397739e153d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722315000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-15e35f94398101b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722326000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-86752ed7a6ccb871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722338000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ed75f9326030dde9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722346000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-9f4cf6878d47fdcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722862000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-97480ccc672ea1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722903000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-296ef9d7316f3db5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722907000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-10c9711466a56af4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722911000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-17966651e74027c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555730264000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-952daa3309c05504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555730283000.png"></p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/04/30/随笔/2019-4-13-redis未授权访问漏洞靶场实验/" class="prev">&larr; Prev post 2019.4.13 Redis未授权访问漏洞漏洞靶场试验</a>
+  
+
+  
+
+  
+    <a href="/2019/04/30/PHP学习笔记/2019-04-18--PHP基本语法/" class="next">Next post 2019.4.18 PHP基本语法（一） &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by VAnSterren using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1288608686,2705208637&fm=26&gp=0.jpg">
+    <p id="description">Don't lose courage.Don't slacken off.</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/VAnSterren">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1726356629@qq.com">
+        
+          Email
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

@@ -1,7 +1,5 @@
 
 
-  
-
 
 
 
@@ -18,9 +16,11 @@
   
   
   
-    <meta name="description" content="Don't lose courage.Don't slacken off.">
+    <meta name="description" content="#一、漏洞描述和危害
+Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。
+二、建议修复方案1、指定redis...">
   
-  <title>Archives [ VAnSterren's Blog ]</title>
+  <title>2019.4.13 Redis未授权访问漏洞漏洞靶场试验 [ VAnSterren's Blog ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -39,6 +39,24 @@
 <body>
 <div class="side-navigate hide-area">
   
+    <div class="item prev">
+      <a href="/2019/04/30/随笔/2019-04-13-FineCMS文件上传漏洞靶场实验/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.13 FineCMS文件上传漏洞靶场实验
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2019/04/30/随笔/2019-04-21--shell靶场实验/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.21 shell靶场试验
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -64,7 +82,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/archives">Archives</a>
             
@@ -103,386 +121,86 @@
     <div id="content-inner">
       
       
-  <article>
-    
+  
 
-  <div id="recent-posts">
-    <h1>Archives
-    
-        <span class="posts-count">
-        Total
-        8
-        
-            posts
-        
-        </span>
-    
-    </h1>
-    
-    
-        
-        
-            
-        
-        
-    
-        
-        
-        
-    
-        
-        
-        
-    
-        
-        
-        
-    
-        
-        
-        
-    
-        
-        
-        
-    
-        
-        
-        
-    
-        
-        
-        
-    
-    
-    
-        
-        
-            
-            <h3 class="archive-year-title">2019
-            
-                <span class="posts-count">
-                Total
-                8
-                
-                    posts
-                
-                </span>
-            
-            </h3>
-        
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/CTF/2019-04-18--Bugku-WEB/">
-  
-    &lt;!DOCTYPE html&gt;
-              2019-04-18  Bugku WEB          body {    ...
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    
-    
-      <br>
+  <article id="post">
+    <h1>2019.4.13 Redis未授权访问漏洞漏洞靶场试验</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-04-29</span>
+      
+        <span id="post-title-updated">Updated at 2019-04-29</span>
       
       
-    
-  </p>
-  
-</div>
-    
+      <span id="post-title-categories">Category
+      
+      
         
         
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/随笔/2019-04-13-FineCMS文件上传漏洞靶场实验/">
-  
-    2019.4.13 FineCMS文件上传漏洞靶场实验
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
+        <a href="/categories/随笔/">随笔</a>
+      
+      </span>
       
       
-      <a href="/categories/随笔/">随笔</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
+      <span id="post-title-tags">
+      Tag
       
       
-      <a href="/tags/实验/">实验</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
         
         
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/随笔/2019-04-21--shell靶场实验/">
-  
-    2019.4.21 shell靶场试验
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
+        <a href="/tags/实验/">实验</a>
       
+      </span>
       
-      <a href="/categories/随笔/">随笔</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/实验/">实验</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-        
-        
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/随笔/2019-04-21--MetInfo-漏洞靶场实验/">
-  
-    2019.4.21 MentInfo漏洞靶场试验
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/随笔/">随笔</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/实验/">实验</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-        
-        
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/PHP学习笔记/2019-04-17--PHP简介/">
-  
-    2019.4.17 PHP简介
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/PHP学习笔记/">PHP学习笔记</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/PHP/">PHP</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-        
-        
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/随笔/2019-4-13-redis未授权访问漏洞靶场实验/">
-  
-    2019.4.13 Redis未授权访问漏洞漏洞靶场试验
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/随笔/">随笔</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/实验/">实验</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-        
-        
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/PHP学习笔记/2019-04-18--PHP基本语法/">
-  
-    2019.4.18 PHP基本语法（一）
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/PHP学习笔记/">PHP学习笔记</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/PHP/">PHP</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-        
-        
-        <div class="post-title-item">
-  
-  <a href="/2019/04/30/Blog/2019-04-29--github+hexo搭建博客（一）/">
-  
-    2019.4.29 GitHub+hexo博客搭建（一）
-  
-  </a>
-  <p class="page-title-sub">
-    <span id="post-title-date">4-29</span>
-    
-    <span id="post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Blog/">Blog</a>
-    
-    </span>
-    
-    
-    <span id="post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Blog/">Blog</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-  </div>
-
+    </p>
+    
+    <p>#一、漏洞描述和危害</p>
+<p>Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。</p>
+<h1 id="二、建议修复方案"><a href="#二、建议修复方案" class="headerlink" title="二、建议修复方案"></a>二、建议修复方案</h1><p>1、指定redis服务使用的网卡 （需要重启redis才能生效）</p>
+<p>在 redis.conf 文件中到 “# bind 127.0.0.1” ，把前面的#号去掉，然后保存。注：修改后只有本机才能访问Redis。</p>
+<p>2、设置访问密码 （需要重启redis才能生效）</p>
+<p>在 redis.conf 中找到“requirepass”字段，在后面填上你需要的密码，Redis客户端也需要使用此密码来访问Redis服务。</p>
+<p>3、修改Redis服务运行账号 （需要重启redis才能生效）</p>
+<p>请以较低权限账号运行Redis服务，且禁用该账号的登录权限。另外可以限制攻击者往敏感写入文件，但是Redis数据还是能被黑客访问到，或者被黑客恶意删除。</p>
+<p>﻿﻿4、设置防火墙策略</p>
+<p>如果正常业务中Redis服务需要被其他服务器来访问，可以设置iptables策略仅允许指定的IP来访问Redis服务。</p>
+<p>#三、实验过程</p>
+<p>通过 redis 指定的 web 目录下写入一句话木马，用菜刀连接可达到控制服务器的目的，远程，<br>连接 redis，写入 webshell</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-7e782eb9ffa942af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
+<p>菜刀连接webshell</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-03c8e0386e3e25c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ffc641d5c63be900.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
+<p>找到flag</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-329fcc288ede318d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
+<p>（如有问题欢迎指出，感谢！）</p>
+<p>参考链接：<a href="http://www.cnblogs.com/chunguang/p/5537895.html" target="_blank" rel="noopener">http://www.cnblogs.com/chunguang/p/5537895.html</a></p>
 
   </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二、建议修复方案"><span class="toc-text">二、建议修复方案</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/04/30/随笔/2019-04-13-FineCMS文件上传漏洞靶场实验/" class="prev">&larr; Prev post 2019.4.13 FineCMS文件上传漏洞靶场实验</a>
+  
+
+  
+
+  
+    <a href="/2019/04/30/随笔/2019-04-21--shell靶场实验/" class="next">Next post 2019.4.21 shell靶场试验 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
