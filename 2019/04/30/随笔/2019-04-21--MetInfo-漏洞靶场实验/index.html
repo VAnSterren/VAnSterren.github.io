@@ -16,7 +16,7 @@
   
   
   
-    <meta name="description" content="#实验原理1.MetInfo 漏洞MetInfo 漏洞由于设计错误，导致远程攻击者访问 MentInfo 并利用漏洞进行文件上传及 webshell 利用。2.文件上传漏洞文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件获得了执行服务器端命令的能力。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做...">
+    <meta name="description" content="实验原理1.MetInfo 漏洞MetInfo 漏洞由于设计错误，导致远程攻击者访问 MentInfo 并利用漏洞进行文件上传及 webshell 利用。2.文件上传漏洞文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件获得了执行服务器端命令的能力。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的...">
   
   <title>2019.4.21 MentInfo漏洞靶场试验 [ VAnSterren's Blog ]</title>
   
@@ -42,7 +42,7 @@
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        
+        2019.4.18 Bugku  Web
       </div>
     </div>
   
@@ -126,7 +126,7 @@
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-29</span>
       
-        <span id="post-title-updated">Updated at 2019-04-29</span>
+        <span id="post-title-updated">Updated at 2019-04-30</span>
       
       
       <span id="post-title-categories">Category
@@ -151,8 +151,8 @@
       
     </p>
     
-    <p>#实验原理<br>1.MetInfo 漏洞<br>MetInfo 漏洞由于设计错误，导致远程攻击者访问 MentInfo 并利用漏洞进行<br>文件上传及 webshell 利用。<br>2.文件上传漏洞<br>文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件<br>获得了执行服务器端命令的能力。这种攻击方式是最为直接和有效的，“文件上<br>传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如<br>果服务器的处理逻辑做的不够安全，则会导致严重的后果。<br>3.文件上传后导致的常见安全问题<br>a) 上传文件是 Web 脚本语言，服务器的 Web 容器解释并执行了用户上传的<br>脚本，导致代码执行。<br>b) 上传文件是 Flash 的策略文件 crossdomain.xml，黑客用以控制 Flash<br>在该域下的行为(其他通过类似方式控制策略文件的情况类似);<br>c) 上传文件是病毒、木马文件，黑客用以诱骗用户或者管理员下载执行。<br>d) 上传文件是钓鱼图片或为包含了脚本的图片，在某些版本的浏览器中会<br>被作为脚本执行，被用于钓鱼和欺诈。<br>4.设计安全的文件上传功能<br>a) 文件上传的目录设置为不可执行<br>b) 判断文件类型：强烈推荐白名单方式。此外，对于图片的处理，可以使<br>用压缩函数或者 resize 函数，在处理图片的同时破坏图片中可能包含的 HTML<br>代码。<br>c) 使用随机数改写文件名和文件路径：一个是上传后无法访问;再来就是<br>像 shell.php.rar.rar 和 crossdomain.xml 这种文件，都将因为重命名而无法<br>攻击。<br>d) 单独设置文件服务器的域名：由于浏览器同源策略的关系，一系列客户<br>端攻击将失效，比如上传 crossdomain.xml、上传包含 Javascript 的 XSS 利用<br>等问题将得到解决。</p>
-<p>#实验过程<br>1.打开靶场工具合集，找到 MetInfo 漏洞，以 txt 格式打开 upload，将其改为<br>靶机 ip，然后以浏览器打开 upload 文件，提交 phpspy.php 文件</p>
+    <h1 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h1><p>1.MetInfo 漏洞<br>MetInfo 漏洞由于设计错误，导致远程攻击者访问 MentInfo 并利用漏洞进行<br>文件上传及 webshell 利用。<br>2.文件上传漏洞<br>文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件<br>获得了执行服务器端命令的能力。这种攻击方式是最为直接和有效的，“文件上<br>传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如<br>果服务器的处理逻辑做的不够安全，则会导致严重的后果。<br>3.文件上传后导致的常见安全问题<br>a) 上传文件是 Web 脚本语言，服务器的 Web 容器解释并执行了用户上传的<br>脚本，导致代码执行。<br>b) 上传文件是 Flash 的策略文件 crossdomain.xml，黑客用以控制 Flash<br>在该域下的行为(其他通过类似方式控制策略文件的情况类似);<br>c) 上传文件是病毒、木马文件，黑客用以诱骗用户或者管理员下载执行。<br>d) 上传文件是钓鱼图片或为包含了脚本的图片，在某些版本的浏览器中会<br>被作为脚本执行，被用于钓鱼和欺诈。<br>4.设计安全的文件上传功能<br>a) 文件上传的目录设置为不可执行<br>b) 判断文件类型：强烈推荐白名单方式。此外，对于图片的处理，可以使<br>用压缩函数或者 resize 函数，在处理图片的同时破坏图片中可能包含的 HTML<br>代码。<br>c) 使用随机数改写文件名和文件路径：一个是上传后无法访问;再来就是<br>像 shell.php.rar.rar 和 crossdomain.xml 这种文件，都将因为重命名而无法<br>攻击。<br>d) 单独设置文件服务器的域名：由于浏览器同源策略的关系，一系列客户<br>端攻击将失效，比如上传 crossdomain.xml、上传包含 Javascript 的 XSS 利用<br>等问题将得到解决。</p>
+<h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><p>1.打开靶场工具合集，找到 MetInfo 漏洞，以 txt 格式打开 upload，将其改为<br>靶机 ip，然后以浏览器打开 upload 文件，提交 phpspy.php 文件</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-5eaadd546049130d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-0974807ace5c5727.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>2.得到如图，将其在网站根目录打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-c8c6b2e35b9eb28c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>3.得到flag<br><img src="https://upload-images.jianshu.io/upload_images/15253954-50cf0eb792afa8c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/15253954-22bb927e7c1f2366.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 
@@ -162,14 +162,14 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实验原理"><span class="toc-text">实验原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实验过程"><span class="toc-text">实验过程</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/04/30/CTF/2019-04-18--Bugku-WEB/" class="prev">&larr; Prev post </a>
+    <a href="/2019/04/30/CTF/2019-04-18--Bugku-WEB/" class="prev">&larr; Prev post 2019.4.18 Bugku  Web</a>
   
 
   

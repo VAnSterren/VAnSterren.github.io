@@ -16,7 +16,7 @@
   
   
   
-    <meta name="description" content="#实验原理1.使用 BurpSuite 密码爆破Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以截获并修改从客户端到 web 应用程序的数据包,通过对网站数...">
+    <meta name="description" content="实验原理1.使用 BurpSuite 密码爆破Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以截获并修改从客户端到 web 应用程序的数据包,通过对网站数据...">
   
   <title>2019.4.21 shell靶场试验 [ VAnSterren's Blog ]</title>
   
@@ -126,7 +126,7 @@
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-29</span>
       
-        <span id="post-title-updated">Updated at 2019-04-29</span>
+        <span id="post-title-updated">Updated at 2019-04-30</span>
       
       
       <span id="post-title-categories">Category
@@ -151,8 +151,8 @@
       
     </p>
     
-    <p>#实验原理<br>1.使用 BurpSuite 密码爆破<br>Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随<br>机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以<br>截获并修改从客户端到 web 应用程序的数据包,通过对网站数据包抓取等方式，将下载的字典<br>载入，从而破解网站的后台登陆密码。<br>2.Webshell 的使用<br>Webshell 是 web 入侵的脚本攻击工具。可以理解为一个 asp 或 php 木马后门，可以在入<br>侵了一个网站后，将这些 asp 或 php 木马后门文件放置在网站服务器的 web 目录中。然后黑<br>客就可以用 web 的方式，通过 asp 或 php 木马后门控制网站服务器，包括上传下载文件、查<br>看数据库、执行任意程序命令等。</p>
-<p>#实验过程<br>1.访问网址<br><img src="https://upload-images.jianshu.io/upload_images/15253954-d6908e421d91c8a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721895000.png"><br>2.御剑扫一下后台，扫出一个网址，<a href="http://10.4.0.101/123.asp" target="_blank" rel="noopener">http://10.4.0.101/123.asp</a> ,然后打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-3b5ab1e90b011f99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721948000.png"></p>
+    <h1 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h1><p>1.使用 BurpSuite 密码爆破<br>Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随<br>机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以<br>截获并修改从客户端到 web 应用程序的数据包,通过对网站数据包抓取等方式，将下载的字典<br>载入，从而破解网站的后台登陆密码。<br>2.Webshell 的使用<br>Webshell 是 web 入侵的脚本攻击工具。可以理解为一个 asp 或 php 木马后门，可以在入<br>侵了一个网站后，将这些 asp 或 php 木马后门文件放置在网站服务器的 web 目录中。然后黑<br>客就可以用 web 的方式，通过 asp 或 php 木马后门控制网站服务器，包括上传下载文件、查<br>看数据库、执行任意程序命令等。</p>
+<h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><p>1.访问网址<br><img src="https://upload-images.jianshu.io/upload_images/15253954-d6908e421d91c8a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721895000.png"><br>2.御剑扫一下后台，扫出一个网址，<a href="http://10.4.0.101/123.asp" target="_blank" rel="noopener">http://10.4.0.101/123.asp</a> ,然后打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-3b5ab1e90b011f99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721948000.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-88f99849ce198155.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721958000.png"><br>3.根据提示，打开网站根目录<a href="http://10.4.0.101/baopozidian.rar，" target="_blank" rel="noopener">http://10.4.0.101/baopozidian.rar，</a><br>下载压缩包<br><img src="https://upload-images.jianshu.io/upload_images/15253954-5c3e199d5a8a60ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721988000.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-ec90390fcec17869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722007000.png"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-79551d7f30073305.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722025000.png"><br>4.输入任意密码（123），打开代理用 burp suite 抓包，对其进行爆<br>破 ， Send intruder-&gt;payloads-&gt;payload set-&gt;load<br>passwd.txt-&gt;start attack ,爆破完成,关闭代理得到网站目录，得<br>到网站根目录和 C 盘根目录的 flag<br><img src="https://upload-images.jianshu.io/upload_images/15253954-e221c46bad89afb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722063000.png"></p>
@@ -174,7 +174,7 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实验原理"><span class="toc-text">实验原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实验过程"><span class="toc-text">实验过程</span></a></li></ol>
   </div>
 </div>
 

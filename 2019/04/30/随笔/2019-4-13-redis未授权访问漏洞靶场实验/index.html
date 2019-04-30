@@ -16,9 +16,8 @@
   
   
   
-    <meta name="description" content="#一、漏洞描述和危害
-Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。
-二、建议修复方案1、指定redis...">
+    <meta name="description" content="一、漏洞描述和危害Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。
+二、建议修复方案1、指定redis服务...">
   
   <title>2019.4.13 Redis未授权访问漏洞漏洞靶场试验 [ VAnSterren's Blog ]</title>
   
@@ -153,8 +152,7 @@ Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者
       
     </p>
     
-    <p>#一、漏洞描述和危害</p>
-<p>Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。</p>
+    <h1 id="一、漏洞描述和危害"><a href="#一、漏洞描述和危害" class="headerlink" title="一、漏洞描述和危害"></a>一、漏洞描述和危害</h1><p>Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。</p>
 <h1 id="二、建议修复方案"><a href="#二、建议修复方案" class="headerlink" title="二、建议修复方案"></a>二、建议修复方案</h1><p>1、指定redis服务使用的网卡 （需要重启redis才能生效）</p>
 <p>在 redis.conf 文件中到 “# bind 127.0.0.1” ，把前面的#号去掉，然后保存。注：修改后只有本机才能访问Redis。</p>
 <p>2、设置访问密码 （需要重启redis才能生效）</p>
@@ -163,8 +161,7 @@ Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者
 <p>请以较低权限账号运行Redis服务，且禁用该账号的登录权限。另外可以限制攻击者往敏感写入文件，但是Redis数据还是能被黑客访问到，或者被黑客恶意删除。</p>
 <p>﻿﻿4、设置防火墙策略</p>
 <p>如果正常业务中Redis服务需要被其他服务器来访问，可以设置iptables策略仅允许指定的IP来访问Redis服务。</p>
-<p>#三、实验过程</p>
-<p>通过 redis 指定的 web 目录下写入一句话木马，用菜刀连接可达到控制服务器的目的，远程，<br>连接 redis，写入 webshell</p>
+<h1 id="三、实验过程"><a href="#三、实验过程" class="headerlink" title="三、实验过程"></a>三、实验过程</h1><p>通过 redis 指定的 web 目录下写入一句话木马，用菜刀连接可达到控制服务器的目的，远程，<br>连接 redis，写入 webshell</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-7e782eb9ffa942af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
 <p>菜刀连接webshell</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/15253954-03c8e0386e3e25c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
@@ -180,7 +177,7 @@ Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二、建议修复方案"><span class="toc-text">二、建议修复方案</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、漏洞描述和危害"><span class="toc-text">一、漏洞描述和危害</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、建议修复方案"><span class="toc-text">二、建议修复方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、实验过程"><span class="toc-text">三、实验过程</span></a></li></ol>
   </div>
 </div>
 
