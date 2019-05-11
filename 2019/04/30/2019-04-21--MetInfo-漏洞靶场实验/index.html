@@ -16,16 +16,9 @@
   
   
   
-    <meta name="description" content="一、实验内容其中任意文件上传漏洞在上传用户头像处，可通过上传一句话木马，修改数据包内容，获取网站Shell。
-二、实验过程1.访问网址，注册账号，已知漏洞在上传用户头像处
-2.登陆之后在桌面创建文件0.txt,
-将一句话木马base64,将base64后的一句话木马写入 0.txt ，文件后缀名改为 .png
-
-
-
-3.接下来上传头像，设置浏览器代理，利用burp抓包，将png修改为php，...">
+    <meta name="description" content="实验原理1.MetInfo 漏洞MetInfo 漏洞由于设计错误，导致远程攻击者访问 MentInfo 并利用漏洞进行文件上传及 webshell 利用。2.文件上传漏洞文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件获得了执行服务器端命令的能力。这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的...">
   
-  <title>2019.4.13 FineCMS文件上传漏洞靶场实验 [ VAnSterren's Blog ]</title>
+  <title>2019.4.21 MentInfo漏洞靶场试验 [ VAnSterren's Blog ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -45,21 +38,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/04/30/2019-04-21--MetInfo-漏洞靶场实验/">
+      <a href="/2019/04/30/2019-04-18--Bugku-WEB/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        2019.4.21 MentInfo漏洞靶场试验
+        2019.4.18 Bugku  Web
       </div>
     </div>
   
   
     <div class="item next">
-      <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/">
+      <a href="/2019/04/30/2019-04-13-FineCMS文件上传漏洞靶场实验/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        2019.4.13 Redis未授权访问漏洞靶场试验
+        2019.4.13 FineCMS文件上传漏洞靶场实验
       </div>
     </div>
   
@@ -129,11 +122,11 @@
   
 
   <article id="post">
-    <h1>2019.4.13 FineCMS文件上传漏洞靶场实验</h1>
+    <h1>2019.4.21 MentInfo漏洞靶场试验</h1>
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-29</span>
       
-        <span id="post-title-updated">Updated at 2019-04-29</span>
+        <span id="post-title-updated">Updated at 2019-04-30</span>
       
       
       <span id="post-title-categories">Category
@@ -158,24 +151,10 @@
       
     </p>
     
-    <h3 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h3><p>其中任意文件上传漏洞在上传用户头像处，可通过上传一句话木马，修改数据包内容，获取网站Shell。</p>
-<h3 id="二、实验过程"><a href="#二、实验过程" class="headerlink" title="二、实验过程"></a>二、实验过程</h3><p>1.访问网址，注册账号，已知漏洞在上传用户头像处</p>
-<p>2.登陆之后在桌面创建文件0.txt,</p>
-<p>将一句话木马base64,将base64后的一句话木马写入 0.txt ，文件后缀名改为 .png</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-063b7548adc18804.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-513d2befee2b4d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-37a0d7a417708f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>3.接下来上传头像，设置浏览器代理，利用burp抓包，将png修改为php，点击Foward放行。这里如果报错，无需理会。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-c6ea58120777b03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-fb5746b1ffd58ccf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1644f28ed8f49632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>4.菜刀连接访问</p>
-<p>通过查看CMS框架，可以知道上传文件存储于uploadfile\member\4下</p>
-<p>使用<strong>菜刀软件</strong>可以直接访问：<a href="http://172.16.12.2/uploadfile/member/3/0x0.php" target="_blank" rel="noopener">http://10.4.0.36/uploadfile/member/4/0x0.php</a>(木马路径), 其中末尾的.php为一个木马文件，密码为‘a’</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-5cd771a59bed2638.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>进入服务器后台，可以直接查看到flag.txt </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1d8169fdef58a9bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>参考链接：<a href="https://blog.csdn.net/lijia111111/article/details/78217828" target="_blank" rel="noopener">FineCMS 5.0.10漏洞集合 - Unitue_逆流 - CSDN博客</a></p>
+    <h1 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h1><p>1.MetInfo 漏洞<br>MetInfo 漏洞由于设计错误，导致远程攻击者访问 MentInfo 并利用漏洞进行<br>文件上传及 webshell 利用。<br>2.文件上传漏洞<br>文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件<br>获得了执行服务器端命令的能力。这种攻击方式是最为直接和有效的，“文件上<br>传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如<br>果服务器的处理逻辑做的不够安全，则会导致严重的后果。<br>3.文件上传后导致的常见安全问题<br>a) 上传文件是 Web 脚本语言，服务器的 Web 容器解释并执行了用户上传的<br>脚本，导致代码执行。<br>b) 上传文件是 Flash 的策略文件 crossdomain.xml，黑客用以控制 Flash<br>在该域下的行为(其他通过类似方式控制策略文件的情况类似);<br>c) 上传文件是病毒、木马文件，黑客用以诱骗用户或者管理员下载执行。<br>d) 上传文件是钓鱼图片或为包含了脚本的图片，在某些版本的浏览器中会<br>被作为脚本执行，被用于钓鱼和欺诈。<br>4.设计安全的文件上传功能<br>a) 文件上传的目录设置为不可执行<br>b) 判断文件类型：强烈推荐白名单方式。此外，对于图片的处理，可以使<br>用压缩函数或者 resize 函数，在处理图片的同时破坏图片中可能包含的 HTML<br>代码。<br>c) 使用随机数改写文件名和文件路径：一个是上传后无法访问;再来就是<br>像 shell.php.rar.rar 和 crossdomain.xml 这种文件，都将因为重命名而无法<br>攻击。<br>d) 单独设置文件服务器的域名：由于浏览器同源策略的关系，一系列客户<br>端攻击将失效，比如上传 crossdomain.xml、上传包含 Javascript 的 XSS 利用<br>等问题将得到解决。</p>
+<h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><p>1.打开靶场工具合集，找到 MetInfo 漏洞，以 txt 格式打开 upload，将其改为<br>靶机 ip，然后以浏览器打开 upload 文件，提交 phpspy.php 文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-5eaadd546049130d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-0974807ace5c5727.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>2.得到如图，将其在网站根目录打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-c8c6b2e35b9eb28c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>3.得到flag<br><img src="https://upload-images.jianshu.io/upload_images/15253954-50cf0eb792afa8c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/15253954-22bb927e7c1f2366.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 
   </article>
   <div class="random-toc-area">
@@ -183,20 +162,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、实验内容"><span class="toc-text">一、实验内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、实验过程"><span class="toc-text">二、实验过程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实验原理"><span class="toc-text">实验原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实验过程"><span class="toc-text">实验过程</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/04/30/2019-04-21--MetInfo-漏洞靶场实验/" class="prev">&larr; Prev post 2019.4.21 MentInfo漏洞靶场试验</a>
+    <a href="/2019/04/30/2019-04-18--Bugku-WEB/" class="prev">&larr; Prev post 2019.4.18 Bugku  Web</a>
   
 
   
 
   
-    <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/" class="next">Next post 2019.4.13 Redis未授权访问漏洞靶场试验 &rarr;</a>
+    <a href="/2019/04/30/2019-04-13-FineCMS文件上传漏洞靶场实验/" class="next">Next post 2019.4.13 FineCMS文件上传漏洞靶场实验 &rarr;</a>
   
 </nav>
 

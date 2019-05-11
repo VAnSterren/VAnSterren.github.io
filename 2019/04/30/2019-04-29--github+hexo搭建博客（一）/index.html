@@ -1,0 +1,380 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="utf-8">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="VAnSterren">
+  
+  
+  
+  
+    <meta name="description" content="一、开通 GitHub page登陆GitHub，点击右上角“+”，点击New respository创建一个新仓库，在新的页面中，将 Repository name（仓库的名称）设置为 username.github.io ，其中 username 是你的用户名,这里VAnSTerren是我的用户名，然后点击页面最下方的”Create repository” ，创建这个仓库。
+二、下载安装...">
+  
+  <title>2019.4.29 GitHub+hexo博客搭建（一） [ VAnSterren's Blog ]</title>
+  
+  
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2019/04/30/2019-04-17--PHP简介/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.17 PHP简介
+      </div>
+    </div>
+  
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1288608686,2705208637&fm=26&gp=0.jpg">
+          <div id="homelink">VAnSterren's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>2019.4.29 GitHub+hexo博客搭建（一）</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-04-29</span>
+      
+        <span id="post-title-updated">Updated at 2019-04-30</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Blog/">Blog</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/Blog/">Blog</a>
+      
+      </span>
+      
+    </p>
+    
+    <h1 id="一、开通-GitHub-page"><a href="#一、开通-GitHub-page" class="headerlink" title="一、开通 GitHub page"></a>一、开通 GitHub page</h1><p>登陆GitHub，点击右上角“+”，点击New respository创建一个新仓库，<br><img src="https://upload-images.jianshu.io/upload_images/15253954-58c1418f1a80e27d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>在新的页面中，将 Repository name（仓库的名称）设置为 username.github.io ，其中 username 是你的用户名,这里VAnSTerren是我的用户名，然后点击页面最下方的”Create repository” ，创建这个仓库。<br><img src="https://upload-images.jianshu.io/upload_images/15253954-93cbde17aa9106b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="二、下载安装配置Git"><a href="#二、下载安装配置Git" class="headerlink" title="二、下载安装配置Git"></a>二、下载安装配置Git</h1><ul>
+<li>Hexo 是一个基于 Node.js 的静态站点生成器，但如果要将站点 publish 到 Github 上的话，还需要依赖 Git </li>
+</ul>
+<h3 id="2-1-Git-下载（Windows）：-https-git-scm-com-download-win"><a href="#2-1-Git-下载（Windows）：-https-git-scm-com-download-win" class="headerlink" title="2.1 Git 下载（Windows）： https://git-scm.com/download/win"></a>2.1 Git 下载（Windows）： <a href="https://git-scm.com/download/win" title="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></h3><p><img src="https://upload-images.jianshu.io/upload_images/15253954-33f64f4bcbf3a884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>下载完成后，点击安装一路next即可。</p>
+<h3 id="2-2-配置Git"><a href="#2-2-配置Git" class="headerlink" title="2.2 配置Git"></a>2.2 配置Git</h3><ul>
+<li>需要先生成一个ssh key 密钥，我们本地的 Git 和远端的 Github 之间通过 SSH 加密传输数据。</li>
+</ul>
+<p>在桌面右键，点击 “Git Bash Here” 打开 bash ：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-c141963bab692456.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/15253954-758251318a4adc3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>输入  cd ~  进入用户主目录<br><img src="https://upload-images.jianshu.io/upload_images/15253954-6a3b8b158a8220dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>接下来执行 ls -al | grep .ssh 检查是否存在一个名为 “.ssh” 的文件夹。</p>
+<p>如果显示有记录，即存在 “.ssh” 文件夹的话。再执行命令 ls .ssh -al 检查一下该文件夹下是否存在两个分别叫做 “id_rsa” 和 “id_rsa.pub” 的文件。如下图所示<br><img src="https://upload-images.jianshu.io/upload_images/15253954-9f45a42938e4db6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>如果输出如图包含 “id_rsa” 和 “id_rsa.pub” ，可以跳过下一步，如果不存在 “.ssh” 文件夹，或者 “.ssh” 文件夹下不存在 “id_rsa” 和 “id_rsa.pub” 密钥对文件，即需要手动创建它们。<br>执行  ssh-keygen -t rsa -C “<a href="mailto:user@server.com" target="_blank" rel="noopener">user@server.com</a>“  生成密钥对，其中 -t rsa 指定了密钥的类型为 RSA ， -C “<a href="mailto:user@server.com" target="_blank" rel="noopener">user@server.com</a>“ 为密钥添加一段注释，可以填写为你注册 Github 时所使用的邮箱。<br>生成密钥对的过程中需要填写三个参数，这里直接跳过，使用默认值<br><img src="https://upload-images.jianshu.io/upload_images/15253954-3482de2b1742c6e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>此时再执行 ls .ssh -al 就可以看见我们想要的文件已经生成。<br>其中 “id_rsa” 为私钥， “id_rsa.pub” 为公钥，我们需要将公钥导入进你的 Github 账户中。</p>
+<p>执行 cat ./.ssh/id_rsa.pub ，然后将输出（也就是公钥）复制进剪切板中（选取输出的全部内容，Ctrl + Insert ）：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-f2d346e4a97a4b0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p> 回到 Github ，点击右上角的头像，再点击 “Settings” 进入设置页面：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/15253954-49ed1bcc12f713c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" "></p>
+<p>进入设置页面后，点击 “Personal settings” 下的 “SSH and GPG keys” ，再点击右侧的 “New SSH key”：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-2d8b6df94a8de943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br> 接下来输入 Title 和 Key 的内容，Title 可以按照自己的喜好来填，比方说 “github page “或者其他都可以<br>输入完 Title 之后，将刚才复制进剪切板的公钥粘贴在 Key 中，然后点击下面的 “Add SSH key” 按钮。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/15253954-41a1da05c4df4cdf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" "></p>
+<p>接下来 Github 会要求输入密码以继续操作，这个密码就是你的 Github 账户的密码。<br>完成后，会回到刚才的 “SSH and GPG keys” 页面，如果成功的话会看见页面上多出了一个新的 SSH key;<br><img src="https://upload-images.jianshu.io/upload_images/15253954-7179099cab166f81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>至此，公钥导入成功。接下来回到 Git Bash ，验证一下能否正常连接。<br>执行  ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>  ，当出现 “(yes/no)” 时输入 “yes” 同意，正常情况下会出现 “…You‘ve successfully authenticated…” ，表示连接可以正常建立:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-9bad63a7efab9172.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>在配置完密钥对之后，我们还需要设置一下 Git 的用户名和邮箱。<br>执行 git config –global user.name “username” ，这里 “username” 为 Github 账户名。<br>执行 git config –global user.email “<a href="mailto:user@server.com" target="_blank" rel="noopener">user@server.com</a>“ ，这里”<a href="mailto:user@server.com" target="_blank" rel="noopener">user@server.com</a>“ 填写为注册 Github 时使用的邮箱。<br>以上两个命令在参数和执行正确的情况下都不会产生输出。<br>2.3 测试<br>最后，测试一下能否正常向我们的 Github Page 上传页面。<br>执行 git clone <a href="https://github.com/username/username.github.io" target="_blank" rel="noopener">https://github.com/username/username.github.io</a> ，其中两个 “username” 均替换为你的 Github 账户名，<br><img src="https://upload-images.jianshu.io/upload_images/15253954-81a910a46fee768e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>中途可能会弹出框输入自己的GitHub账号密码，在新弹出的窗口输入密码<br>上述步骤完成后，在浏览器中再次打开你的 Github Page（这里以我的 VAnSterren.github.io 为例），就可以看见 Hello World 了</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1dca5364310ea30d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="三、安装-Node-js-和-Hexo"><a href="#三、安装-Node-js-和-Hexo" class="headerlink" title="三、安装 Node.js 和 Hexo"></a>三、安装 Node.js 和 Hexo</h1><p>###3.1 安装Node.js</p>
+<ul>
+<li>Hexo 基于 Node.js </li>
+</ul>
+<p>下载 Node.js 的安装包： <a href="http://nodejs.cn/download/" title="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a><br>下载完成后，进行安装，一路next即可。<br>然后打开命令提示符，依次执行 node -v 和 npm -v ，正常情况下这两条命令会输出 Node.js 和 npm 包管理器的版本号。<br><img src="https://upload-images.jianshu.io/upload_images/15253954-6e73f3e628cdd439.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="3-2-安装hexo"><a href="#3-2-安装hexo" class="headerlink" title="3.2 安装hexo"></a>3.2 安装hexo</h3><p>在命令提示符中执行 npm install -g hexo-cli ，全局安装 Hexo：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-064dc7199434019d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong><em>以下命令以管理员身份打开cmd执行命令，否则可能执行不成功</em></strong></p>
+<h1 id="四、建站"><a href="#四、建站" class="headerlink" title="四、建站"></a>四、建站</h1><p>###4.1 站点初始化</p>
+<p>我将博客放在D盘的blog文件夹里，你也可以找一个自己喜欢的地方</p>
+<p>打开cmd，输入d: ,然后执行hexo init hexo_blog，执行成功后如图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-650fcc98f58f9ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>初始化完成后，依次执行 cd hexo_blog 和 npm install 安装依赖：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-bbef74a5d614fa02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="4-2-本地浏览"><a href="#4-2-本地浏览" class="headerlink" title="4.2 本地浏览"></a>4.2 本地浏览</h3><ul>
+<li>在将博客的更新 publish 到 Github 之前，可以首先在本地看一下效果如何</li>
+</ul>
+<p>在站点的根目录（ hexo_blog ）下，依次执行 hexo clean （清理缓存）， hexo generate （生成静态文件）和 hexo server（运行本地服务器）：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-56ebdf52e506fb25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/15253954-09a5af6778d0f553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>在初始化 Hexo 时， Hexo 会生成一个 Hello World 的页面，我们可以在浏览器中输入 localhost:4000 来访问它：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-52ce0f652755ce93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="4-3-部署至GitHub"><a href="#4-3-部署至GitHub" class="headerlink" title="4.3 部署至GitHub"></a>4.3 部署至GitHub</h3><p>首先需要对博客文件夹下的 “_config.yml” 做一些修改，</p>
+<ul>
+<li>注： 如果某项配置不为空，则该项配置的冒号后面必须跟上一个半角空格（英文空格）。</li>
+</ul>
+<p>关于 #Site 部分各字段的描述请参考官方文档：<a href="https://hexo.io/zh-cn/docs/configuration.html#%E7%BD%91%E7%AB%99" title="https://hexo.io/zh-cn/docs/configuration.html#网站" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/configuration.html#网站</a><br>默认配置为<br><img src="https://upload-images.jianshu.io/upload_images/15253954-61720ac05f62b3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>这里给出我自己的配置<br><img src="https://upload-images.jianshu.io/upload_images/15253954-12bf9a0a4e73d3f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>在 #URL 下，修改 url 为你的 Github Pages 地址：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-e78d2bf7a179ffd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>找到 #Deployment ，将其下的 deploy 项修改为：<br><img src="https://upload-images.jianshu.io/upload_images/15253954-29b54870dcb5f2d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>其中 type 填写为 git ，repo 填写为你的 Github Pages 所在仓库的地址， branch 填写为 master （仓库的一个分支，目前只有一个 master ）。</p>
+<p>修改完毕后保存并关闭文件。</p>
+<p>最后，需要一个叫 hexo-deployer-git 的 npm 包将网站部署到 Github 上。<br>现在 cmd 应该正在本地运行我们的博客网站，按 Ctrl + C 终止运行。<br>执行 npm install hexo-deployer-git –save 安装 hexo-deployer-git：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-8db7bd90a21779ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>安装完成后，依次执行下列命令进行部署：</p>
+<p>hexo clean（不可简写）<br>hexo generate（可简写为 hexo g)<br>hexo deploy(可简写为 hexo d)</p>
+<p>期间可能会让你输入你的 Github 账户名和密码，部署完成。<br>打开自己的GitHub pages 就可以看见自己的博客了。<br>默认情况下，博客位官方默认主题lanscape。</p>
+<ul>
+<li>（hexo 主题更换请看（二））<h1 id="五、文章管理"><a href="#五、文章管理" class="headerlink" title="五、文章管理"></a>五、文章管理</h1></li>
+</ul>
+<p>文章的 Markdown 文件存放在博客文件夹下的 source 目录下。</p>
+<p>默认情况下，新建的文章都会存放在 “_post” 子目录下，现在里面只有一个叫 “hello-world.md” 的文件，这就是刚刚 publish 到 Github 上的博客中的唯一一篇文章的 Markdown 源文件。</p>
+<h3 id="5-1-新建文章"><a href="#5-1-新建文章" class="headerlink" title="5.1 新建文章"></a>5.1 新建文章</h3><p>回到 cmd ，在博客文件夹的根目录下执行 hexo new <title> 来向 post 中添加一篇指定标题的空白文章，例如 hexo new “my first article” ：</title></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-a050c28199fa3d29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>在 source/_post 下会生成一个与之对应的新 Markdown 文件，这就是我们的新文章，选择你喜欢的文本编辑器对它进行编辑即可</p>
+<p>编辑并保存之后，在 cmd 中依次执行<br>hexo clean<br>hexo g<br>hexo d<br>即可将新文章部署至 Github </p>
+<h3 id="5-2-删除文章"><a href="#5-2-删除文章" class="headerlink" title="5.2 删除文章"></a>5.2 删除文章</h3><p>只需要在执行 hexo clean 前删掉对应的 Markdown 文件即可</p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、开通-GitHub-page"><span class="toc-text">一、开通 GitHub page</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、下载安装配置Git"><span class="toc-text">二、下载安装配置Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Git-下载（Windows）：-https-git-scm-com-download-win"><span class="toc-text">2.1 Git 下载（Windows）： https://git-scm.com/download/win</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-配置Git"><span class="toc-text">2.2 配置Git</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#三、安装-Node-js-和-Hexo"><span class="toc-text">三、安装 Node.js 和 Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-安装hexo"><span class="toc-text">3.2 安装hexo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、建站"><span class="toc-text">四、建站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-本地浏览"><span class="toc-text">4.2 本地浏览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-部署至GitHub"><span class="toc-text">4.3 部署至GitHub</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、文章管理"><span class="toc-text">五、文章管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-新建文章"><span class="toc-text">5.1 新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-删除文章"><span class="toc-text">5.2 删除文章</span></a></li></ol></li>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2019/04/30/2019-04-17--PHP简介/" class="prev">&larr; Prev post 2019.4.17 PHP简介</a>
+  
+
+  
+
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by VAnSterren using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1288608686,2705208637&fm=26&gp=0.jpg">
+    <p id="description">Don't lose courage.Don't slacken off.</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/VAnSterren">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1726356629@qq.com">
+        
+          Email
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

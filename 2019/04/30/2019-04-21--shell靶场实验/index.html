@@ -16,16 +16,9 @@
   
   
   
-    <meta name="description" content="一、实验内容其中任意文件上传漏洞在上传用户头像处，可通过上传一句话木马，修改数据包内容，获取网站Shell。
-二、实验过程1.访问网址，注册账号，已知漏洞在上传用户头像处
-2.登陆之后在桌面创建文件0.txt,
-将一句话木马base64,将base64后的一句话木马写入 0.txt ，文件后缀名改为 .png
-
-
-
-3.接下来上传头像，设置浏览器代理，利用burp抓包，将png修改为php，...">
+    <meta name="description" content="实验原理1.使用 BurpSuite 密码爆破Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以截获并修改从客户端到 web 应用程序的数据包,通过对网站数据...">
   
-  <title>2019.4.13 FineCMS文件上传漏洞靶场实验 [ VAnSterren's Blog ]</title>
+  <title>2019.4.21 shell靶场试验 [ VAnSterren's Blog ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -45,21 +38,21 @@
 <div class="side-navigate hide-area">
   
     <div class="item prev">
-      <a href="/2019/04/30/2019-04-21--MetInfo-漏洞靶场实验/">
-        <div class="item-icon"></div>
-      </a>
-      <div class="item-title">
-        2019.4.21 MentInfo漏洞靶场试验
-      </div>
-    </div>
-  
-  
-    <div class="item next">
       <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
         2019.4.13 Redis未授权访问漏洞靶场试验
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2019/04/30/2019-04-18--PHP基本语法/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.18 PHP基本语法
       </div>
     </div>
   
@@ -129,11 +122,11 @@
   
 
   <article id="post">
-    <h1>2019.4.13 FineCMS文件上传漏洞靶场实验</h1>
+    <h1>2019.4.21 shell靶场试验</h1>
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-29</span>
       
-        <span id="post-title-updated">Updated at 2019-04-29</span>
+        <span id="post-title-updated">Updated at 2019-04-30</span>
       
       
       <span id="post-title-categories">Category
@@ -158,24 +151,22 @@
       
     </p>
     
-    <h3 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h3><p>其中任意文件上传漏洞在上传用户头像处，可通过上传一句话木马，修改数据包内容，获取网站Shell。</p>
-<h3 id="二、实验过程"><a href="#二、实验过程" class="headerlink" title="二、实验过程"></a>二、实验过程</h3><p>1.访问网址，注册账号，已知漏洞在上传用户头像处</p>
-<p>2.登陆之后在桌面创建文件0.txt,</p>
-<p>将一句话木马base64,将base64后的一句话木马写入 0.txt ，文件后缀名改为 .png</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-063b7548adc18804.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-513d2befee2b4d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-37a0d7a417708f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>3.接下来上传头像，设置浏览器代理，利用burp抓包，将png修改为php，点击Foward放行。这里如果报错，无需理会。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-c6ea58120777b03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-fb5746b1ffd58ccf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1644f28ed8f49632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>4.菜刀连接访问</p>
-<p>通过查看CMS框架，可以知道上传文件存储于uploadfile\member\4下</p>
-<p>使用<strong>菜刀软件</strong>可以直接访问：<a href="http://172.16.12.2/uploadfile/member/3/0x0.php" target="_blank" rel="noopener">http://10.4.0.36/uploadfile/member/4/0x0.php</a>(木马路径), 其中末尾的.php为一个木马文件，密码为‘a’</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-5cd771a59bed2638.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>进入服务器后台，可以直接查看到flag.txt </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1d8169fdef58a9bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>参考链接：<a href="https://blog.csdn.net/lijia111111/article/details/78217828" target="_blank" rel="noopener">FineCMS 5.0.10漏洞集合 - Unitue_逆流 - CSDN博客</a></p>
+    <h1 id="实验原理"><a href="#实验原理" class="headerlink" title="实验原理"></a>实验原理</h1><p>1.使用 BurpSuite 密码爆破<br>Burp Suite 是 Web 应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务. 请求的拦截和修改,扫描 web 应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随<br>机性检查。Burp Suite 带有一个代理,通过默认端口 8080 上运行，使用这个代理，我们可以<br>截获并修改从客户端到 web 应用程序的数据包,通过对网站数据包抓取等方式，将下载的字典<br>载入，从而破解网站的后台登陆密码。<br>2.Webshell 的使用<br>Webshell 是 web 入侵的脚本攻击工具。可以理解为一个 asp 或 php 木马后门，可以在入<br>侵了一个网站后，将这些 asp 或 php 木马后门文件放置在网站服务器的 web 目录中。然后黑<br>客就可以用 web 的方式，通过 asp 或 php 木马后门控制网站服务器，包括上传下载文件、查<br>看数据库、执行任意程序命令等。</p>
+<h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><p>1.访问网址<br><img src="https://upload-images.jianshu.io/upload_images/15253954-d6908e421d91c8a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721895000.png"><br>2.御剑扫一下后台，扫出一个网址，<a href="http://10.4.0.101/123.asp" target="_blank" rel="noopener">http://10.4.0.101/123.asp</a> ,然后打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-3b5ab1e90b011f99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721948000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-88f99849ce198155.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721958000.png"><br>3.根据提示，打开网站根目录<a href="http://10.4.0.101/baopozidian.rar，" target="_blank" rel="noopener">http://10.4.0.101/baopozidian.rar，</a><br>下载压缩包<br><img src="https://upload-images.jianshu.io/upload_images/15253954-5c3e199d5a8a60ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555721988000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ec90390fcec17869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722007000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-79551d7f30073305.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722025000.png"><br>4.输入任意密码（123），打开代理用 burp suite 抓包，对其进行爆<br>破 ， Send intruder-&gt;payloads-&gt;payload set-&gt;load<br>passwd.txt-&gt;start attack ,爆破完成,关闭代理得到网站目录，得<br>到网站根目录和 C 盘根目录的 flag<br><img src="https://upload-images.jianshu.io/upload_images/15253954-e221c46bad89afb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722063000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-19f0972579eb6e90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722072000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ded9d397739e153d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722315000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-15e35f94398101b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722326000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-86752ed7a6ccb871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722338000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ed75f9326030dde9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722346000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-9f4cf6878d47fdcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722862000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-97480ccc672ea1de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722903000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-296ef9d7316f3db5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722907000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-10c9711466a56af4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555722911000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-17966651e74027c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555730264000.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-952daa3309c05504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen_shot_1555730283000.png"></p>
 
   </article>
   <div class="random-toc-area">
@@ -183,20 +174,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、实验内容"><span class="toc-text">一、实验内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、实验过程"><span class="toc-text">二、实验过程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实验原理"><span class="toc-text">实验原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实验过程"><span class="toc-text">实验过程</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2019/04/30/2019-04-21--MetInfo-漏洞靶场实验/" class="prev">&larr; Prev post 2019.4.21 MentInfo漏洞靶场试验</a>
+    <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/" class="prev">&larr; Prev post 2019.4.13 Redis未授权访问漏洞靶场试验</a>
   
 
   
 
   
-    <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/" class="next">Next post 2019.4.13 Redis未授权访问漏洞靶场试验 &rarr;</a>
+    <a href="/2019/04/30/2019-04-18--PHP基本语法/" class="next">Next post 2019.4.18 PHP基本语法 &rarr;</a>
   
 </nav>
 
