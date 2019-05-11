@@ -16,16 +16,10 @@
   
   
   
-    <meta name="description" content="一、实验内容其中任意文件上传漏洞在上传用户头像处，可通过上传一句话木马，修改数据包内容，获取网站Shell。
-二、实验过程1.访问网址，注册账号，已知漏洞在上传用户头像处
-2.登陆之后在桌面创建文件0.txt,
-将一句话木马base64,将base64后的一句话木马写入 0.txt ，文件后缀名改为 .png
-
-
-
-3.接下来上传头像，设置浏览器代理，利用burp抓包，将png修改为php，...">
+    <meta name="description" content="一、漏洞描述和危害Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。
+二、建议修复方案1、指定redis服务...">
   
-  <title>2019.4.13 FineCMS文件上传漏洞靶场实验 [ VAnSterren's Blog ]</title>
+  <title>2019.4.13 Redis未授权访问漏洞靶场试验 [ VAnSterren's Blog ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -44,13 +38,22 @@
 <body>
 <div class="side-navigate hide-area">
   
-  
-    <div class="item next">
-      <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/">
+    <div class="item prev">
+      <a href="/2019/04/30/2019-04-13-FineCMS文件上传漏洞靶场实验/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        2019.4.13 Redis未授权访问漏洞靶场试验
+        2019.4.13 FineCMS文件上传漏洞靶场实验
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2019/04/30/2019-04-17--PHP简介/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.4.17 PHP简介
       </div>
     </div>
   
@@ -120,11 +123,11 @@
   
 
   <article id="post">
-    <h1>2019.4.13 FineCMS文件上传漏洞靶场实验</h1>
+    <h1>2019.4.13 Redis未授权访问漏洞靶场试验</h1>
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-29</span>
       
-        <span id="post-title-updated">Updated at 2019-04-29</span>
+        <span id="post-title-updated">Updated at 2019-05-09</span>
       
       
       <span id="post-title-categories">Category
@@ -149,24 +152,24 @@
       
     </p>
     
-    <h3 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h3><p>其中任意文件上传漏洞在上传用户头像处，可通过上传一句话木马，修改数据包内容，获取网站Shell。</p>
-<h3 id="二、实验过程"><a href="#二、实验过程" class="headerlink" title="二、实验过程"></a>二、实验过程</h3><p>1.访问网址，注册账号，已知漏洞在上传用户头像处</p>
-<p>2.登陆之后在桌面创建文件0.txt,</p>
-<p>将一句话木马base64,将base64后的一句话木马写入 0.txt ，文件后缀名改为 .png</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-063b7548adc18804.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-513d2befee2b4d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-37a0d7a417708f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>3.接下来上传头像，设置浏览器代理，利用burp抓包，将png修改为php，点击Foward放行。这里如果报错，无需理会。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-c6ea58120777b03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-fb5746b1ffd58ccf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1644f28ed8f49632.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>4.菜刀连接访问</p>
-<p>通过查看CMS框架，可以知道上传文件存储于uploadfile\member\4下</p>
-<p>使用<strong>菜刀软件</strong>可以直接访问：<a href="http://172.16.12.2/uploadfile/member/3/0x0.php" target="_blank" rel="noopener">http://10.4.0.36/uploadfile/member/4/0x0.php</a>(木马路径), 其中末尾的.php为一个木马文件，密码为‘a’</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-5cd771a59bed2638.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>进入服务器后台，可以直接查看到flag.txt </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/15253954-1d8169fdef58a9bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>参考链接：<a href="https://blog.csdn.net/lijia111111/article/details/78217828" target="_blank" rel="noopener">FineCMS 5.0.10漏洞集合 - Unitue_逆流 - CSDN博客</a></p>
+    <h1 id="一、漏洞描述和危害"><a href="#一、漏洞描述和危害" class="headerlink" title="一、漏洞描述和危害"></a>一、漏洞描述和危害</h1><p>Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件。如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。</p>
+<h1 id="二、建议修复方案"><a href="#二、建议修复方案" class="headerlink" title="二、建议修复方案"></a>二、建议修复方案</h1><p>1、指定redis服务使用的网卡 （需要重启redis才能生效）</p>
+<p>在 redis.conf 文件中到 “# bind 127.0.0.1” ，把前面的#号去掉，然后保存。注：修改后只有本机才能访问Redis。</p>
+<p>2、设置访问密码 （需要重启redis才能生效）</p>
+<p>在 redis.conf 中找到“requirepass”字段，在后面填上你需要的密码，Redis客户端也需要使用此密码来访问Redis服务。</p>
+<p>3、修改Redis服务运行账号 （需要重启redis才能生效）</p>
+<p>请以较低权限账号运行Redis服务，且禁用该账号的登录权限。另外可以限制攻击者往敏感写入文件，但是Redis数据还是能被黑客访问到，或者被黑客恶意删除。</p>
+<p>﻿﻿4、设置防火墙策略</p>
+<p>如果正常业务中Redis服务需要被其他服务器来访问，可以设置iptables策略仅允许指定的IP来访问Redis服务。</p>
+<h1 id="三、实验过程"><a href="#三、实验过程" class="headerlink" title="三、实验过程"></a>三、实验过程</h1><p>通过 redis 指定的 web 目录下写入一句话木马，用菜刀连接可达到控制服务器的目的，远程，<br>连接 redis，写入 webshell</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-7e782eb9ffa942af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
+<p>菜刀连接webshell</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-03c8e0386e3e25c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-ffc641d5c63be900.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
+<p>找到flag</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-329fcc288ede318d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50" alt="image"></p>
+<p>（如有问题欢迎指出，感谢！）</p>
+<p>参考链接：<a href="http://www.cnblogs.com/chunguang/p/5537895.html" target="_blank" rel="noopener">http://www.cnblogs.com/chunguang/p/5537895.html</a></p>
 
   </article>
   <div class="random-toc-area">
@@ -174,18 +177,20 @@
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、实验内容"><span class="toc-text">一、实验内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、实验过程"><span class="toc-text">二、实验过程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、漏洞描述和危害"><span class="toc-text">一、漏洞描述和危害</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、建议修复方案"><span class="toc-text">二、建议修复方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、实验过程"><span class="toc-text">三、实验过程</span></a></li></ol>
   </div>
 </div>
 
   
 <nav id="pagination">
   
-
+    <a href="/2019/04/30/2019-04-13-FineCMS文件上传漏洞靶场实验/" class="prev">&larr; Prev post 2019.4.13 FineCMS文件上传漏洞靶场实验</a>
   
 
   
-    <a href="/2019/04/30/2019-04-13--redis未授权访问漏洞靶场实验/" class="next">Next post 2019.4.13 Redis未授权访问漏洞靶场试验 &rarr;</a>
+
+  
+    <a href="/2019/04/30/2019-04-17--PHP简介/" class="next">Next post 2019.4.17 PHP简介 &rarr;</a>
   
 </nav>
 
