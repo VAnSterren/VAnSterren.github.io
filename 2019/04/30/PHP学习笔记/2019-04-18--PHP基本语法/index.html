@@ -23,7 +23,7 @@ PHP 文件的默认文件扩展名是 “.php”。
 PHP 文件通常包含 HTML 标签以及一些 PHP 脚本代码。
 下面的例子是一个简单的 PHP 文件，其中包含了使用内建 PHP 函数 “echo” 在网页上输出文本...">
   
-  <title>2019.4.18 PHP基本语法（一） [ VAnSterren's Blog ]</title>
+  <title>2019.4.18 PHP基本语法 [ VAnSterren's Blog ]</title>
   
   
     <link rel="shortcut icon" href="/hollow.ico">
@@ -127,11 +127,11 @@ PHP 文件通常包含 HTML 标签以及一些 PHP 脚本代码。
   
 
   <article id="post">
-    <h1>2019.4.18 PHP基本语法（一）</h1>
+    <h1>2019.4.18 PHP基本语法</h1>
     <p class="page-title-sub">
       <span id="post-title-date">Created at 2019-04-29</span>
       
-        <span id="post-title-updated">Updated at 2019-05-09</span>
+        <span id="post-title-updated">Updated at 2019-05-11</span>
       
       
       <span id="post-title-categories">Category
@@ -178,20 +178,6 @@ PHP 文件通常包含 HTML 标签以及一些 PHP 脚本代码。
 <p>在 PHP 中，所有变量都对大小写敏感。</p>
 <p>如下例子，只有第一条语句会显示 \$color 变量的值（这是因为<br> \$ color 、\$COLOR 以及 $coLOR 被视作三个不同的变量）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">$color=&quot;red&quot;;</span><br><span class="line">echo &quot;My car is &quot; . $color . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo &quot;My house is &quot; . $COLOR . &quot;&lt;br&gt;&quot;;</span><br><span class="line">echo &quot;My boat is &quot; . $coLOR . &quot;&lt;br&gt;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
 <p>输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">My car is red</span><br><span class="line">My house is</span><br><span class="line">My boat is</span><br></pre></td></tr></table></figure></p>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是存储信息的容器：<br>实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$x=5;</span><br><span class="line">$y=6;</span><br><span class="line">$z=$x+$y;</span><br><span class="line">echo $z;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11</span><br></pre></td></tr></table></figure>
-<ul>
-<li>PHP 变量可用于保存值和表达。</li>
-</ul>
-<h5 id="PHP-变量规则："><a href="#PHP-变量规则：" class="headerlink" title="PHP 变量规则："></a>PHP 变量规则：</h5><ul>
-<li>变量以 $ 符号开头，其后是变量的名称</li>
-<li>变量名称必须以字母或下划线开头</li>
-<li>变量名称不能以数字开头<ul>
-<li>变量名称只能包含字母数字字符和下划线（A-z、0-9 以及 _）</li>
-<li>变量名称对大小写敏感（$y 与 $Y 是两个不同的变量）</li>
-</ul>
-</li>
-</ul>
 
   </article>
   <div class="random-toc-area">
@@ -199,7 +185,7 @@ PHP 文件通常包含 HTML 标签以及一些 PHP 脚本代码。
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础-PHP-语法"><span class="toc-text">基础 PHP 语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP中的注释"><span class="toc-text">PHP中的注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP大小写是否敏感"><span class="toc-text">PHP大小写是否敏感</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP-变量规则："><span class="toc-text">PHP 变量规则：</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础-PHP-语法"><span class="toc-text">基础 PHP 语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP中的注释"><span class="toc-text">PHP中的注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP大小写是否敏感"><span class="toc-text">PHP大小写是否敏感</span></a></li></ol>
   </div>
 </div>
 
