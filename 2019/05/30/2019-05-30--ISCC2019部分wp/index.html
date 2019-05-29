@@ -1,0 +1,349 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="utf-8">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="VAnSterren">
+  
+  
+  
+  
+    <meta name="description" content="Webweb 1代码审计题
+判断value，其值不能在32和127之间，否则销毁 chr函数在转换时会自动取模256,所以我们只需要在原本ascii码基础上+256即可（即十进制ASCII码加上256还是等于原数）intval()在处理16进制时存在问题,但强制转换时时正常的.payload :  value[0]=375&amp;value[1]=307&amp;value[2]=364&...">
+  
+  <title>2019.5.30 ISCC2019部分WP [ VAnSterren's Blog ]</title>
+  
+  
+    <link rel="shortcut icon" href="/hollow.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/2019/05/21/2019-05-18--HDCTF/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        2019.5.18 HDCTF Web
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onclick="openUserCard()">
+          <img id="avatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1288608686,2705208637&fm=26&gp=0.jpg">
+          <div id="homelink">VAnSterren's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  
+
+  <article id="post">
+    <h1>2019.5.30 ISCC2019部分WP</h1>
+    <p class="page-title-sub">
+      <span id="post-title-date">Created at 2019-05-29</span>
+      
+        <span id="post-title-updated">Updated at 2019-05-29</span>
+      
+      
+      <span id="post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/CTF/">CTF</a>
+      
+      </span>
+      
+      
+      <span id="post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/CTF/">CTF</a>
+      
+      </span>
+      
+    </p>
+    
+    <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h3 id="web-1"><a href="#web-1" class="headerlink" title="web 1"></a>web 1</h3><p>代码审计题<br><img src="https://upload-images.jianshu.io/upload_images/15253954-eea8bd57d4dfa713.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-fc28a4ec3a50caa8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>判断value，其值不能在32和127之间，否则销毁<br> chr函数在转换时会自动取模256,所以我们只需要在原本ascii码基础上+256即可（即十进制ASCII码加上256还是等于原数）<br>intval()在处理16进制时存在问题,但强制转换时时正常的.<br>payload :  value[0]=375&amp;value[1]=307&amp;value[2]=364&amp;value[3]=355&amp;value[4]=304&amp;value[5]=365&amp;value[6]=357&amp;value[7]=351&amp;value[8]=340&amp;value[9]=367&amp;value[10]=351&amp;value[11]=329&amp;value[12]=339&amp;value[13]=323&amp;value[14]=323&amp;value[15]=306&amp;value[16]=304&amp;value[17]=305&amp;value[18]=313&amp;password=0x91d<br><img src="https://upload-images.jianshu.io/upload_images/15253954-5bf8039f7960b4cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="web-2"><a href="#web-2" class="headerlink" title="web 2"></a>web 2</h3><p>打开题目<br><img src="https://upload-images.jianshu.io/upload_images/15253954-5e9d2a0517fe13cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>输入任意三位数密码，输入验证码<br><img src="https://upload-images.jianshu.io/upload_images/15253954-072be0a5cc413d2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这里需要先绕过验证码，用burp抓包，大哥说验证码基本大多数都写在cookie里，删掉cookie的值，然后 send to intruder<br><img src="https://upload-images.jianshu.io/upload_images/15253954-ff7126dff52eca27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>接着爆破三位数密码<br>选中pwd= 后的任意密码，<br><img src="https://upload-images.jianshu.io/upload_images/15253954-8dd34df9a771ae9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>添加三位数的字典开始爆破</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-2725958389737fc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>爆破结果得到密码 996<br><img src="https://upload-images.jianshu.io/upload_images/15253954-4d92ef55a8977580.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>回到题目输入密码与验证码，提交即可得到flag</p>
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h3 id="隐藏的信息"><a href="#隐藏的信息" class="headerlink" title="隐藏的信息"></a>隐藏的信息</h3><p><img src="https://upload-images.jianshu.io/upload_images/15253954-9619ae88306ebe52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>下载附件得到密文<br>密文为八进制加密，需要将其转为字符串，写一个解密脚本得到flag<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">test = &quot;0126 062 0126 0163 0142 0103 0102 0153 0142 062 065 0154 0111 0121 0157 0113 0111 0105 0132 0163 0131 0127 0143 066 0111 0105 0154 0124 0121 060 0116 067 0124 0152 0102 0146 0115 0107 065 0154 0130 062 0116 0150 0142 0154 071 0172 0144 0104 0102 0167 0130 063 0153 0167 0144 0130 060 0113&quot;</span><br><span class="line">#判断当前字符串的格式（编码类型）</span><br><span class="line">b = test.split(&quot; &quot;)</span><br><span class="line">c=&quot;&quot;</span><br><span class="line"></span><br><span class="line">for i in b:</span><br><span class="line">    c+=chr(int(i,8))</span><br><span class="line">print(base64.b64decode(c))</span><br></pre></td></tr></table></figure></p>
+<h3 id="倒立屋"><a href="#倒立屋" class="headerlink" title="倒立屋"></a>倒立屋</h3><p><img src="https://upload-images.jianshu.io/upload_images/15253954-09bc32924ba34c4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>下载题目图片<br><img src="https://upload-images.jianshu.io/upload_images/15253954-5e1cd7fbbccf0469.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="倒立屋.png"><br> stegsolve打开图片，猜测是lsb最低位隐写</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-d63326ea6e821a5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>得到flag ，提交却不对，根据题目，flag为  9102_cCsI</p>
+<h3 id="Keyes’-secret"><a href="#Keyes’-secret" class="headerlink" title="Keyes’ secret"></a>Keyes’ secret</h3><p>打开题目<br>猜测是键盘密码，但是不太明白<br>直接贴大佬的脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"></span><br><span class="line">STR =&apos;&apos;&apos;RFVGYHNWSXCDEWSXCVWSXCVTGBNMJUY,WSXZAQWDVFRQWERTYTRFVBTGBNMJUYXSWEFTYHNNBVCXSWERFTGBNMJUTYUIOJMWSXCDEMNBVCDRTGHUQWERTYIUYHNBVWSXCDETRFVBTGBNMJUMNBVCDRTGHUWSXTYUIOJMEFVT,QWERTYTRFVBGRDXCVBNBVCXSWERFTYUIOJMTGBNMJUMNBVCDRTGHUWSXCDEQWERTYTYUIOJMRFVGYHNWSXCDEQWERTYTRFVGWSXCVGRDXCVBCVGREDQWERTY(TRFVBTYUIOJMTRFVG),QWERTYGRDXCVBQWERTYTYUIOJMEFVTNBVCXSWERFWSXCDEQWERTYTGBNMJUYTRFVGQWERTYTRFVBMNBVCDRTGHUEFVTNBVCXSWERFTYUIOJMTGBNMJUYIUYHNBVNBVCXSWERFTGBNMJUYMNBVCDRTGHUTYUIOJM,QWERTYWSXIUYHNBVQWERTYGRDXCVBQWERTYTRFVBTGBNMJUYXSWEFTYHNNBVCXSWERFTGBNMJUTYUIOJMWSXCDEMNBVCDRTGHUQWERTYIUYHNBVWSXCDETRFVBTGBNMJUMNBVCDRTGHUWSXTYUIOJMEFVTQWERTYTRFVBTGBNMJUYXSWEFTYHNNBVCXSWERFWSXCDETYUIOJMWSXTYUIOJMWSXTGBNMJUYZAQWDVFR.QWERTYTRFVBTYUIOJMTRFVGQWERTYTRFVBTGBNMJUYZAQWDVFRTYUIOJMWSXCDEIUYHNBVTYUIOJMIUYHNBVQWERTYGRDXCVBMNBVCDRTGHUWSXCDEQWERTYTGBNMJUIUYHNBVTGBNMJUGRDXCVBWSXCVWSXCVEFVTQWERTYWSXCFEWSXCDEIUYHNBVWSXCVGREDZAQWDVFRWSXCDEWSXCFEQWERTYTYUIOJMTGBNMJUYQWERTYIUYHNBVWSXCDEMNBVCDRTGHUEFVGYWSXCDEQWERTYGRDXCVBIUYHNBVQWERTYGRDXCVBZAQWDVFRQWERTYWSXCDEWSXCFETGBNMJUTRFVBGRDXCVBTYUIOJMWSXTGBNMJUYZAQWDVFRGRDXCVBWSXCVQWERTYWSXCDERGNYGCWSXCDEMNBVCDRTGHUTRFVBWSXIUYHNBVWSXCDEQWERTYTYUIOJMTGBNMJUYQWERTYCVGREDWSXEFVGYWSXCDEQWERTYNBVCXSWERFGRDXCVBMNBVCDRTGHUTYUIOJMWSXTRFVBWSXNBVCXSWERFGRDXCVBZAQWDVFRTYUIOJMIUYHNBVQWERTYWSXCDERGNYGCNBVCXSWERFWSXCDEMNBVCDRTGHUWSXWSXCDEZAQWDVFRTRFVBWSXCDEQWERTYWSXZAQWDVFRQWERTYIUYHNBVWSXCDETRFVBTGBNMJUMNBVCDRTGHUWSXZAQWDVFRCVGREDQWERTYGRDXCVBQWERTYXSWEFTYHNGRDXCVBTRFVBRFVGYHNWSXZAQWDVFRWSXCDE,QWERTYGRDXCVBIUYHNBVQWERTYEFVGYWDCFTWSXCDEWSXCVWSXCVQWERTYGRDXCVBIUYHNBVQWERTYTRFVBTGBNMJUYZAQWDVFRWSXCFETGBNMJUTRFVBTYUIOJMWSXZAQWDVFRCVGREDQWERTYGRDXCVBZAQWDVFRWSXCFEQWERTYMNBVCDRTGHUWSXCDEGRDXCVBTRFVBTYUIOJMWSXZAQWDVFRCVGREDQWERTYTYUIOJMTGBNMJUYQWERTYTYUIOJMRFVGYHNWSXCDEQWERTYIUYHNBVTGBNMJUYMNBVCDRTGHUTYUIOJMQWERTYTGBNMJUYTRFVGQWERTYGRDXCVBTYUIOJMTYUIOJMGRDXCVBTRFVBQAZSCEIUYHNBVQWERTYTRFVGTGBNMJUYTGBNMJUZAQWDVFRWSXCFEQWERTYWSXZAQWDVFRQWERTYTYUIOJMRFVGYHNWSXCDEQWERTYMNBVCDRTGHUWSXCDEGRDXCVBWSXCVQWERTYEFVGYWDCFTTGBNMJUYMNBVCDRTGHUWSXCVWSXCFEQWERTY(WSX.WSXCDE.,QWERTYYHNMKJTGBNMJUCVGREDQWERTYYHNMKJTGBNMJUYTGBNMJUZAQWDVFRTYUIOJMEFVTQWERTYNBVCXSWERFMNBVCDRTGHUTGBNMJUYCVGREDMNBVCDRTGHUGRDXCVBXSWEFTYHNIUYHNBVQWERTYWSXZAQWDVFRQWERTYNBVCXSWERFMNBVCDRTGHUTGBNMJUYTRFVGWSXCDEIUYHNBVIUYHNBVWSXTGBNMJUYZAQWDVFRGRDXCVBWSXCVQWERTYIUYHNBVWSXCDETYUIOJMTYUIOJMWSXZAQWDVFRCVGREDIUYHNBV).QWERTYRFVGYHNWSXCDEMNBVCDRTGHUWSXCDEQWERTYGRDXCVBMNBVCDRTGHUWSXCDE</span><br><span class="line">QWERTYEFVTTGBNMJUYTGBNMJUMNBVCDRTGHUQWERTYTRFVGWSXCVGRDXCVBCVGRED&#123;WSXIUYHNBVTRFVBTRFVBQWERTYQAZSCEWSXCDEEFVTYHNMKJTGBNMJUYGRDXCVBMNBVCDRTGHUWSXCFEQWERTYTRFVBWSXNBVCXSWERFRFVGYHNWSXCDEMNBVCDRTGHU&#125;</span><br><span class="line">QWERTYMNBVCDRTGHUWSXCDEEFVGYWSXCDEMNBVCDRTGHUIUYHNBVWSXCDE-WSXCDEZAQWDVFRCVGREDWSXZAQWDVFRWSXCDEWSXCDEMNBVCDRTGHUWSXZAQWDVFRCVGRED,QWERTYZAQWDVFRWSXCDETYUIOJMEFVGYWDCFTTGBNMJUYMNBVCDRTGHUQAZSCEQWERTYIUYHNBVZAQWDVFRWSXTRFVGTRFVGWSXZAQWDVFRCVGRED,QWERTYNBVCXSWERFMNBVCDRTGHUTGBNMJUYTYUIOJMTGBNMJUYTRFVBTGBNMJUYWSXCVQWERTYGRDXCVBZAQWDVFRGRDXCVBWSXCVEFVTIUYHNBVWSXIUYHNBV,QWERTYIUYHNBVEFVTIUYHNBVTYUIOJMWSXCDEXSWEFTYHNQWERTYGRDXCVBWSXCFEXSWEFTYHNWSXZAQWDVFRWSXIUYHNBVTYUIOJMMNBVCDRTGHUGRDXCVBTYUIOJMWSXTGBNMJUYZAQWDVFR,QWERTYNBVCXSWERFMNBVCDRTGHUTGBNMJUYCVGREDMNBVCDRTGHUGRDXCVBXSWEFTYHNXSWEFTYHNWSXZAQWDVFRCVGRED,QWERTYGRDXCVBZAQWDVFRWSXCFEQWERTYTRFVBMNBVCDRTGHUEFVTNBVCXSWERFTYUIOJMGRDXCVBZAQWDVFRGRDXCVBWSXCVEFVTIUYHNBVWSXIUYHNBVQWERTYGRDXCVBMNBVCDRTGHUWSXCDEQWERTYGRDXCVBWSXCVWSXCVQWERTYIUYHNBVQAZSCEWSXWSXCVWSXCVIUYHNBVQWERTYEFVGYWDCFTRFVGYHNWSXTRFVBRFVGYHNQWERTYRFVGYHNGRDXCVBEFVGYWSXCDEQWERTYYHNMKJWSXCDEWSXCDEZAQWDVFRQWERTYMNBVCDRTGHUWSXCDEQAZXCDEWVTGBNMJUWSXMNBVCDRTGHUWSXCDEWSXCFEQWERTYYHNMKJEFVTQWERTYNBVCXSWERFMNBVCDRTGHUWSXTGBNMJUYMNBVCDRTGHUQWERTYTRFVBTYUIOJMTRFVGQWERTYTRFVBTGBNMJUYZAQWDVFRTYUIOJMWSXCDEIUYHNBVTYUIOJMIUYHNBVQWERTYGRDXCVBTYUIOJMQWERTYWSXCFEWSXCDETRFVGQWERTYTRFVBTGBNMJUYZAQWDVFR.</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">STR = STR.replace(&quot;WSXCDE&quot;,&apos;e&apos;)</span><br><span class="line">STR = STR.replace(&quot;RFVGYHN&quot;,&apos;h&apos;)</span><br><span class="line">STR = STR.replace(&quot;WSXCV&quot;,&apos;l&apos;)</span><br><span class="line">STR = STR.replace(&quot;TGBNMJUY&quot;,&apos;o&apos;)</span><br><span class="line">STR = STR.replace(&quot;TGBNMJU&quot;,&apos;u&apos;)</span><br><span class="line">STR = STR.replace(&quot;GRDXCVB&quot;,&apos;a&apos;)</span><br><span class="line">STR = STR.replace(&quot;CVGRED&quot;,&apos;g&apos;)</span><br><span class="line">STR = STR.replace(&quot;QWERTYTRFVG&quot;,&apos;f&apos;)</span><br><span class="line">STR = STR.replace(&quot;WSXCFE&quot;,&apos;d&apos;)</span><br><span class="line">STR = STR.replace(&quot;IUYHNBV&quot;,&apos;s&apos;)</span><br><span class="line">STR = STR.replace(&quot;QWERTY&quot;,&apos; &apos;)</span><br><span class="line">STR = STR.replace(&quot;TRFVB&quot;,&apos;c&apos;)</span><br><span class="line">STR = STR.replace(&quot;QAZSCE&quot;,&apos;k&apos;)</span><br><span class="line">STR = STR.replace(&quot;NBVCXSWERF&quot;,&apos;p&apos;)</span><br><span class="line">STR = STR.replace(&quot;MNBVCDRTGHU&quot;,&apos;r&apos;)</span><br><span class="line">STR = STR.replace(&quot;WSX&quot;,&apos;i&apos;)</span><br><span class="line">STR = STR.replace(&quot;EFVT&quot;,&apos;y&apos;)</span><br><span class="line">STR = STR.replace(&quot;YHNMKJ&quot;,&apos;b&apos;)</span><br><span class="line">STR = STR.replace(&quot;ZAQWDVFR&quot;,&apos;n&apos;)</span><br><span class="line">STR = STR.replace(&apos;XSWEFTYHNXSWEFTYHN&apos;,&apos;m&apos;)</span><br><span class="line">STR = STR.replace(&apos;EFVGYWDCFT&apos;,&apos;w&apos;)</span><br><span class="line">STR = STR.replace(&apos;TYUIOJM&apos;,&apos;t&apos;)</span><br><span class="line">STR = STR.replace(&apos;QAZXCDEWV&apos;,&apos;t&apos;)</span><br><span class="line">STR = STR.replace(&apos;XSWEFTYHN&apos;,&apos;m&apos;)</span><br><span class="line">STR = STR.replace(&apos;EFVGY&apos;,&apos;v&apos;)</span><br><span class="line">STR = STR.replace(&apos;RGNYGC&apos;,&apos;x&apos;)</span><br><span class="line">STR = STR.replace(&apos;TRFVG&apos;, &apos;f&apos;)</span><br><span class="line">print(STR).upper()</span><br></pre></td></tr></table></figure></p>
+<p>flag是大写</p>
+<h3 id="Aesop’s-secret"><a href="#Aesop’s-secret" class="headerlink" title="Aesop’s secret"></a>Aesop’s secret</h3><p>下载下来是一张GIF，找到一个<a href="https://tu.sioe.cn/gj/fenjie/" target="_blank" rel="noopener">网站</a>可以将GIF图片反向分解成一张张静态图<br><img src="https://upload-images.jianshu.io/upload_images/15253954-4998c85ac6d38fcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>用winhex打开GIF图片，在末尾发现一串AES加密，可以想到密钥为ISCC，<br><img src="https://upload-images.jianshu.io/upload_images/15253954-f729b0dad4371be4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img.png"><br>进行两次解密即可得到flag</p>
+<h1 id="MISC-1"><a href="#MISC-1" class="headerlink" title="MISC"></a>MISC</h1><h3 id="他们能在一起吗？"><a href="#他们能在一起吗？" class="headerlink" title="他们能在一起吗？"></a>他们能在一起吗？</h3><p>题目<br><img src="https://upload-images.jianshu.io/upload_images/15253954-4fa40ed07bc0311b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>下载附件是一个二维码图片<br><img src="https://upload-images.jianshu.io/upload_images/15253954-b804123a05e73c0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>扫描得到一串base64<br><img src="https://upload-images.jianshu.io/upload_images/15253954-63c17ec45be67a26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>base64解密<br><img src="https://upload-images.jianshu.io/upload_images/15253954-fff1977cb9481dc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>可是提交不对，winhex分析图片，末尾有一个txt文件<br><img src="https://upload-images.jianshu.io/upload_images/15253954-729db4bdbc4091b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>将txt分离出来得到一个压缩包，压缩包里是一个加密txt文件，密码就是上面base64出来字符串，得到flag</p>
+<h3 id="Welcome"><a href="#Welcome" class="headerlink" title="Welcome"></a>Welcome</h3><p>题目<br><img src="https://upload-images.jianshu.io/upload_images/15253954-3711b572eb0f4376.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>直接拖进linux打开是一个zip压缩包，打开是一个txt文件<br><img src="https://upload-images.jianshu.io/upload_images/15253954-202b85f757efadba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>看中间的空格，一个空格等于0，两个空格等于1，之后二进制解密即可</p>
+<h3 id="无法运行的exe"><a href="#无法运行的exe" class="headerlink" title="无法运行的exe"></a>无法运行的exe</h3><p>下载题目，无法打开<br><img src="https://upload-images.jianshu.io/upload_images/15253954-691b01e2e7a26ad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>试一下记事本，打开是一串base64<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iVBORw0KGgAAAAANSUhEUgAAASkAAAEpAQAAAADn4ukvAAACAklEQVR4nO2aQY6bQBBF3wdLsGvvsoSb4JzM+GbmCLmBvcwOFpFAMvwsIJ5ZjsRkcEj3BlR6Un9apa+qLmQ+sC7JRyiIWMQiFrGIfRjrNK+yy0eJi0oYl1i+sbY9YJlt+0roDgBVcwTZttvNte0BGyXV0OXInC9VCyCpfAFt+8FCn04s2ftlm/4/WBcGSTrR5V+36Z6xw/xIDTSELpsSzt/L0I5goNtQ2w6w+XgHAVB034bUguJH/stzLNtO216w4HndGA5gne5H0iXWb6xtN9hFZejTUfKV0I8Jqpuyi3XvJ2FnNwpDaqhuz2CI2bsG4+kA9rVwjwyVW9IJ+7p0HPUrf8IrY8ytWTrhurqxWO6NzDZUt9mW4/Guw8bU0JSAxeVUtACO3rsWW7J38QT3sycUbfbQWxrH7F2HZZ6ARgoPWTWEHmvJ5421/dPY0rXhxHAvB2kyzf34M9ekjbXtBxtTS6pa0gnVFPcci3NsK1Zi+P1qM0+8qxwo2ui9q7HntCJ0SlimFQmcfdtc2x6wP9OKLjw0Jy3pBHA/bq5tD9gyrViGQdyPgyRoqui9n4llD0u+QvYA1xDbis/EhoPsGkJ3kLmcvmTTHWMsBYM9X+nMlw92nz5riVg5rMUGzSM2siFBvgJYql9B2z+NHQDC23986fKaPTDE+96IRSxiEfsb2G/jeCyvdHD3rQAAAABJRU5ErkJggg==</span><br></pre></td></tr></table></figure></p>
+<p>将其转换为文件，<a href="http://www.tomeko.net/online_tools/base64.php?lang=en" target="_blank" rel="noopener">链接</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15253954-c8d32a3c93eab3ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>用winhex打开，发现png<br><img src="https://upload-images.jianshu.io/upload_images/15253954-7f1802c734d91830.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>8字节的PNG文件署名域用来识别该文件是不是PNG文件。该域的值是：</p>
+<ul>
+<li>十进制数137 80 78 71 13 10 26 10</li>
+<li>十六进制数 89 50 4e 47 0d 0a 1a 0a<br><a href="https://www.jianshu.com/p/4d8cace82028" target="_blank" rel="noopener">参考链接</a><br>将00改为0A<br><img src="https://upload-images.jianshu.io/upload_images/15253954-b796b77a5ca800f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>保存之后后缀名改为 .png，之后打开是二维码，扫描就得到flag<br><img src="https://upload-images.jianshu.io/upload_images/15253954-0c82ecff13cfa293.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web-1"><span class="toc-text">web 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web-2"><span class="toc-text">web 2</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#隐藏的信息"><span class="toc-text">隐藏的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#倒立屋"><span class="toc-text">倒立屋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Keyes’-secret"><span class="toc-text">Keyes’ secret</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aesop’s-secret"><span class="toc-text">Aesop’s secret</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC-1"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#他们能在一起吗？"><span class="toc-text">他们能在一起吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Welcome"><span class="toc-text">Welcome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无法运行的exe"><span class="toc-text">无法运行的exe</span></a></li></ol></li>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2019/05/21/2019-05-18--HDCTF/" class="next">Next post 2019.5.18 HDCTF Web &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by VAnSterren using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1288608686,2705208637&fm=26&gp=0.jpg">
+    <p id="description">Don't lose courage.Don't slacken off.</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/VAnSterren">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1726356629@qq.com">
+        
+          Email
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["flash"],"timer":true,"delay":1500000,"shuffle":true,"count":12};
+var unsplashConfig = {"gravity":"center"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
